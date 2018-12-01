@@ -10,7 +10,7 @@ import static spark.Spark.*;
 public class EmisMain {
     public static void main(String[] args) {
         //TODO: cannot mix static files and resources from a jar with spark.
-        staticFileLocation("/");
+        staticFileLocation("/public");
         Resource resource = Resource.newClassPathResource("/META-INF/resources");
         get("/list", (req, res) -> resource.getListHTML("/", true));
         //get("/", (req, res) -> );
