@@ -1,10 +1,5 @@
 package com.emissystem.www.home;
 
-
-
-import org.eclipse.jetty.util.resource.Resource;
-
-
 import static spark.Spark.*;
 
 public class EmisMain {
@@ -16,8 +11,10 @@ public class EmisMain {
         // When the app/server is running, access it with "localhost:4567" in a browser
         // To display an html page you made and put in /public, access it with "localhost:4567/FileName.html"
 
-        Resource resource = Resource.newClassPathResource("/META-INF/resources");
-        get("/list", (req, res) -> resource.getListHTML("/", true));
+        get("/", (request, response) -> {
+            response.redirect("login.html");
+            return null;
+        });
         //get("/", (req, res) -> );
     }
 }
