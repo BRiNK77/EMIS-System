@@ -1,0 +1,75 @@
+<!--Patient information is assumed to be passed
+	Name, Age, Email, Address, Medical info, and Doctors notes
+	Edit patient info button not needed for demo-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>EMIS</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+	crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-expand navbar-light bg-light border-bottom">
+		<a class="navbar-brand" href="#">EMIS</a>
+	</nav>
+	<div class="containter bg-dark">
+		<div class="row">
+			<div class="col">
+				<form action="patientList.html" style="padding:10px">
+					<button class="btn" type="submit">Back to Patient List</button>
+				</form>
+			</div>
+			<div class="col">
+				<form action="editProfile.html" style="padding:10px">
+					<button class="btn float-right" type="submit">Edit Patient Information</button>
+				</form>
+			</div>
+		</div>
+		<h2 class="text-center" style="color:white;">Patient Profile</h2>
+		<div class="row">
+			<div class="col-2">
+			</div>
+			<div class="col bg-light">
+				<div>
+					<h3>Name: Aldo Ramirez</h3>
+					<h3>Age: 21</h3>
+					<h3>Email: aldo123123@email.com</h3>
+					<h3>Address: 123 S San Antonio St</h3>
+				</div>
+				<br>
+				<div class="panel panel-default border">
+					<h5 class="panel-body font-italic">Medical Information goes here</h5>
+				</div>
+			</div>
+			<div class="col bg-light">
+				<br>
+				<div>
+					<img class="rounded mx-auto d-block" src="images/profilePic.png" style="max-width:50%">
+				</div>
+				<br>
+				<div class="panel panel-default border">
+					<h5 class="text-center font-italic panel-body">Doctors notes go here</h5>
+				</div>
+				<br>
+			</div>
+			<div class="col-2">
+			</div>
+		</div>
+	</div>
+	<footer class="bg-dark">
+		<br>
+	</footer>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+	crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" 
+	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" 
+	crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" 
+	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" 
+	crossorigin="anonymous"></script>
+</body>
+</html>
