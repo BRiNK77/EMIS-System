@@ -9,14 +9,11 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>emis system</name>
   <url>http://www.emissystem.com</url>
-  <packaging>jar</packaging>
-  
   <scm>
     <url>https://github.com/BRiNK77/EMIS-System</url>
     <connection>scm:git:git://github.com/BRiNK77/EMIS-System.git</connection>
     <developerConnection>scm:git:git@github.com/BRiNK77/EMIS-System.git</developerConnection>
   </scm>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -47,6 +44,7 @@
     </dependency>
   </dependencies>
 
+  <packaging>jar</packaging>
   <build>
     <finalName>emis</finalName>
     <pluginManagement> <!-- specify plugin versions -->
