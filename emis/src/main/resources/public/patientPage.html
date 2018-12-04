@@ -1,0 +1,114 @@
+<!--Patient information is assumed to be passed
+	Name, Age, Email, Address, Medical info, and Doctors notes
+	Edit patient info button not needed for demo-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>EMIS</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body class="bg-dark">
+	<nav class="navbar navbar-expand navbar-light bg-light border-bottom">
+		<a class="navbar-brand" href="#">EMIS - Company Name Here</a>
+	</nav>
+	<div class="containter">
+		<div class="row">
+			<div class="col">
+				<form action="patientList.html" style="padding:10px">
+					<button class="btn" type="submit">Back to Patient List</button>
+				</form>
+			</div>
+			<div class="col">
+				<form action="#" style="padding:10px">
+					<button class="btn float-right edit" type="submit"><span></span></button>
+				</form>
+			</div>
+		</div>
+		<h2 class="text-center" style="color:white;">Patient Profile</h2>
+		<div class="row">
+			<div class="col-1">
+			</div>
+			<div class="col-sm-6 bg-light pt-3 rounded-left">
+				<form>
+					<div class="form-group row">
+						<label for="staticName" class="col-md-3 col-form-label">Name:</label>
+						<div class="col-md">
+							<input type="text" readonly class="form-control-plaintext" id="staticName" value="Aldo Ramirez">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="staticAge" class="col-md-3 col-form-label">Birth-Date:</label>
+						<div class="col-md">
+							<input type="text" readonly class="form-control-plaintext" id="staticAge" value="05-25-96">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="staticEmail" class="col-md-3 col-form-label">Email:</label>
+						<div class="col-md">
+							<input type="text" readonly class="form-control-plaintext editable" id="staticEmail" value="email@example.com">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="staticAddress" class="col-md-3 col-form-label">Address:</label>
+						<div class="col-md">
+							<input type="text" readonly class="form-control-plaintext editable" id="staticAddress" value="123 S San Antonio St, San Antonio, TX">
+						</div>
+					</div>
+				</form>
+				<br />
+				<div class="panel panel-default border">
+					<h5 class="panel-body font-italic">Medical Information goes here</h5>
+				</div>
+			</div>
+			<div class="col-sm bg-light pt-3 rounded-right">
+				<div>
+					<img class="rounded mx-auto d-block" src="images/profilePic.png" style="max-width:215px">
+				</div>
+				<br>
+				<div class="panel panel-default border">
+					<h5 class="text-center font-italic panel-body">Doctors notes go here</h5>
+				</div>
+				<br>
+			</div>
+			<div class="col-1">
+			</div>
+		</div>
+	</div>
+	<footer class="bg-dark">
+		<br>
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+	crossorigin="anonymous"></script>
+
+<script>
+	var toggle = 1;
+	$('.edit span').text('Edit Patient Information');
+    $('.edit').click(function() {
+
+				if (toggle == 1) {
+					$('.editable').removeClass('form-control-plaintext').addClass('form-control').attr("readonly", false);
+					toggle = 2;
+					$('.edit span').text('Save Changes');
+				}
+        else {
+					$('.editable').removeClass('form-control').addClass('form-control-plaintext').attr("readonly", true);
+					toggle = 1;
+					$('.edit span').text('Edit Patient Information');
+				}
+
+    });
+
+</script>
+</body>
+</html>
