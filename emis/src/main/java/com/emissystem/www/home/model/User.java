@@ -7,13 +7,17 @@ public class User {
     private final String    EMAIL;
     private final String    SALT;
     private final String    PASS;
+    private final String    NAME;
+    private final int       UID;
     private final String    PRIVLEVEL; //PAT REC NUR DOC ADM
 
-    @java.beans.ConstructorProperties({"EMAIL", "SALT", "PASS", "PRIVLEVEL"})
-    public User(String EMAIL, String SALT, String PASS, String PRIVLEVEL) {
+    @java.beans.ConstructorProperties({"EMAIL", "SALT", "PASS", "NAME", "PRIVLEVEL"})
+    public User(String EMAIL, String SALT, String PASS, int UID, String NAME, String PRIVLEVEL) {
         this.EMAIL = EMAIL;
         this.SALT = SALT;
         this.PASS = PASS;
+        this.UID = UID;
+        this.NAME = NAME;
         this.PRIVLEVEL = PRIVLEVEL;
     }
 
@@ -29,6 +33,14 @@ public class User {
         return PASS;
     }
 
+    public int    getUID() {
+        return UID;
+    }
+
+    public String getNAME() {
+        return NAME;
+    }
+
     public String getPRIVLEVEL() {
         return PRIVLEVEL;
     }
@@ -42,13 +54,15 @@ public class User {
         return Objects.equals(EMAIL, user.EMAIL) &&
                Objects.equals(SALT, user.SALT) &&
                Objects.equals(PASS, user.PASS) &&
+               UID == user.UID &&
+               Objects.equals(NAME, user.NAME) &&
                Objects.equals(PRIVLEVEL, user.PRIVLEVEL);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(EMAIL, SALT, PASS, PRIVLEVEL);
+        return Objects.hash(EMAIL, SALT, PASS, NAME, PRIVLEVEL);
     }
 
     @Override
@@ -57,6 +71,8 @@ public class User {
                "EMAIL='" + EMAIL +
                "', SALT='" + SALT +
                "', PASS='" + PASS +
+               "', UID='" + UID +
+               "', NAME='" + NAME +
                "', PRIVLEVEL='" + PRIVLEVEL +
                "'}";
     }

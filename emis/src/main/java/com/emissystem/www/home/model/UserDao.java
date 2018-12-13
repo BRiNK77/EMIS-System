@@ -1,24 +1,50 @@
 package com.emissystem.www.home.model;
 
-import com.google.common.collect.*;
 import java.util.*;
 import java.util.stream.*;
 
 public class UserDao {
+    private User defaultUser = new User("default@gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",9999, "Default", "ADM");
 
-    private final List<User> users = ImmutableList.of(
-            //        Username    Salt for hash                    Hashed password (the password is "password" for all users)
-            new User("perwendel", "$2a$10$h.dl5J86rGH7I8bD9bZeZe", "$2a$10$h.dl5J86rGH7I8bD9bZeZeci0pDt0.VwFTGujlnEaZXPf/q7vM5wO", User.PrivLevel.PATIENT),
-            new User("davidase", "$2a$10$e0MYzXyjpJS7Pd0RVvHwHe", "$2a$10$e0MYzXyjpJS7Pd0RVvHwHe1HlCS4bZJ18JuywdEMLT83E1KDmUhCy", User.PrivLevel.DOCTOR),
-            new User("federico", "$2a$10$E3DgchtVry3qlYlzJCsyxe", "$2a$10$E3DgchtVry3qlYlzJCsyxeSK0fftK4v0ynetVCuDdxGVl1obL.ln2", User.PrivLevel.PATIENT)
+    private List<User> users = Arrays.asList(
+            new User("p0@gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",1000, "Jon Paul", "PAT"),
+            new User("p1@gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",1001,"Yu Testa","PAT"),
+            new User("p2@gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",1002,"Medicine Man","PAT"),
+            new User("p3@gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",1003,"Gabriel Sotelo-Rosa","PAT"),
+            new User("p4@gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",1004,"Forrest Gump","PAT"),
+            new User("p5@gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",1005,"Captain Sparrow","PAT"),
+            new User("p6@gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",1006,"Chase Bool","PAT"),
+            new User("p7@gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",1007,"Sarah Connor","PAT"),
+            new User("p8@gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",1008,"Ashley Smith","PAT"),
+            new User("p9@gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",1009,"Tristan Scallion","PAT"),
+            new User("r0@gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",2000,"America","REC"),
+            new User("r1gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",2000,"Triston Zamboni","REC"),
+            new User("n0gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",3000,"Alldos Ramires","NUR"),
+            new User("n1gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",3000,"Grace McGraceFace","NUR"),
+            new User("d0gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",4001,"Doctor Mann","DOC"),
+            new User("d1gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",4002,"James Paceface","DOC"),
+            new User("d2gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",4003,"Captain America","DOC"),
+            new User("d3gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",4004,"Clown Reject","DOC"),
+            new User("d4gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",4005,"Nohta Narc","DOC"),
+            new User("d5gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",4006,"Serial Kaller","DOC"),
+            new User("d6gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",4007,"Nota Liecensed","DOC"),
+            new User("d7gmail.com","$2a$10$h.dl5J86rGH7I8bD9bZeZe","password",4008,"Doctoral Immunuh","DOC")
             );
 
-    public User getUserByUsername(String username) {
-        return users.stream().filter(b -> b.getEMAIL().equals(username)).findFirst().orElse(null);
+    public User getUserByUsername(String email) {
+        return users.stream().filter(b -> b.getEMAIL().equals(email)).findFirst().orElse(defaultUser);
     }
 
-    public Iterable<String> getAllUserNames() {
-        return users.stream().map(User::getEMAIL).collect(Collectors.toList());
+    public User getUserByUID(int UID) {
+        return users.stream().filter(b -> (b.getUID() == UID)).findFirst().orElse(defaultUser);
+    }
+
+    public Iterable<String> getAllNames() {
+        return users.stream().map(User::getNAME).collect(Collectors.toList());
+    }
+
+    public Iterable<Integer> getAllUID() {
+        return users.stream().map(User::getUID).collect(Collectors.toList());
     }
 
 }

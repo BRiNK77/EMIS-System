@@ -32,6 +32,6 @@ public class UserController {
     }
 
     public static String getPrivilege(String queryUsername) {
-        return userDao.getUserByUsername(queryUsername).getPRIVLEVEL().name();
+        return userDao.getUserByUsername(queryUsername).getPRIVLEVEL();
     }
 }
