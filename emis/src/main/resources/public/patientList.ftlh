@@ -1,5 +1,8 @@
-<!--Every patient name in the system is assumed to be passed
-    Clicking a name takes you to the patient profile-->
+<!--
+  Expected Data:
+    NAMEList: an arraylist of the names of all the patients
+    UIDList: an arraylist of the UID's of all the patients	
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +20,7 @@
 
 		<div class="row">
 			<div class="col">
-				<form action="mainDoctor.html" style="padding:10px">
+				<form action="/main/" style="padding:10px">
 					<button class="btn" type="submit">Back to Main</button>
 				</form>
 			</div>
@@ -25,18 +28,22 @@
 
 		<h2 class="text-center" style="color:white;">Patient List</h2>
 
-		<div class="panel panel-default w-75" style="margin-left:auto;margin-right:auto">
-			<div class="list-group panel-body">
-				<form action="patientPage.html">
-					<button type="submit" class="list-group-item list-group-item-action">Aldo Ramirez : UID#01008</button>
+		<div class="container bg-light rounded">
+			<div class="form-group py-3">
+				<#list NAMEList as NAME>
+				<form action="/profile/">
+					<div class="input-group">
+						<input type="text" class="form-control disable" id="arg0" value="${NAME}" readonly/>
 
-					<button type="button" class="list-group-item list-group-item-action">John Doe : UID#01024</button>
-					<button type="button" class="list-group-item list-group-item-action">Jaime Gonzalez : UID#01025</button>
-					<button type="button" class="list-group-item list-group-item-action">Christian White : UID#01056</button>
-					<button type="button" class="list-group-item list-group-item-action">Jane Doe : UID#01063</button>
-					<button type="button" class="list-group-item list-group-item-action">Joe Dirt : UID#01067</button>
+						<input type="text" class="form-control disable" id="arg1" value="${UIDList[NAME?index]}" readonly/>
+
+	                  	<div class="input-group-append">
+	                      <button class="btn-secondary" type="submit">Select</button>
+	                  	</div>
+					</div>
 				</form>
-			</div>
+	          	</#list>
+          	</div>
 		</div>
 	</div>
 
