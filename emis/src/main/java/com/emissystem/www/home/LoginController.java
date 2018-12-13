@@ -10,12 +10,12 @@ import static com.emissystem.www.home.util.RequestUtil.*;
 public class LoginController {
 
     public static Route serveLoginPage = (Request request, Response response) -> {
-        response.redirect("/login.html");
-        return null;
+        return ViewUtil.render(request, new HashMap<>(), Path.Template.LOGIN);
     };
 
     public static Route handleLoginPost = (Request request, Response response) -> {
         Map<String, Object> model = new HashMap<>();
+        System.out.print(getQueryEmail(request) + request.params() + "\n");
         if (!UserController.authenticate(getQueryEmail(request), getQueryPassword(request))) {
             model.put("authenticationFailed", true);
             return ViewUtil.render(request, model, Path.Template.LOGIN);
@@ -25,7 +25,7 @@ public class LoginController {
         request.session().attribute("privilege", UserController.getPrivilege(getQueryEmail(request)));
         model.put("PRIVLEVEL", userDao.getUserByUsername(getQueryEmail(request)).getPRIVLEVEL() );
         model.put("UID", userDao.getUserByUsername(getQueryEmail(request)).getUID());
-        model.put("NAME", getQueryEmail(request));
+        model.put("NAME", userDao.getUserByUsername(getQueryEmail(request)).getNAME());
         return ViewUtil.render(request, model, Path.Template.MAIN);
     };
 

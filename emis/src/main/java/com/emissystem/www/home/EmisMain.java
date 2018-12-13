@@ -7,8 +7,8 @@ import static spark.Spark.*;
 
 public class EmisMain {
 
-    static UserDao userDao;
-    static ChartDao chartDao;
+    static UserDao userDao = new UserDao();
+    static ChartDao chartDao = new ChartDao();
 
     public static void main(String[] args) {
         // SERVER CONFIGURATION

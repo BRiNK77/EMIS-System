@@ -1,5 +1,6 @@
 package com.emissystem.www.home.util;
 
+import com.emissystem.www.home.EmisMain;
 import freemarker.template.*;
 import org.eclipse.jetty.http.*;
 import spark.*;
@@ -33,7 +34,7 @@ public class ViewUtil {
         FreeMarkerEngine configuredEngine = new FreeMarkerEngine();
         Configuration cfg = new Configuration(Configuration.VERSION_2_3_23);
         //cfg.setDirectoryForTemplateLoading(new File("src/main/resources/freemarker"));
-        cfg.setClassForTemplateLoading(ViewUtil.class, "/");
+        cfg.setClassForTemplateLoading(EmisMain.class, "/");
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
         cfg.setDefaultEncoding("UTF-8");
         cfg.setLogTemplateExceptions(false);

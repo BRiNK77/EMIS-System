@@ -22,11 +22,11 @@
 	<nav class="navbar navbar-expand navbar-light bg-light border-bottom">
 		<a class="navbar-brand" href="#">EMIS - Company Name Here</a>
 	</nav>
-	<div class="containter">
+	<div class="container">
 
 		<div class="row">
 			<div class="col">
-				<form action="login/" style="padding:10px">
+				<form action="/login/" style="padding:10px">
 					<button class="btn" type="submit">Logout</button>
 				</form>
 			</div>
@@ -62,7 +62,7 @@
                 <div class="input-group-prepend w-25">
                   <span class="input-group-text w-100">Get My Patient List</span>
                 </div>
-                <input type="text" class="form-control" id="arg0" value="${UID?string.computer}" readonly/>
+                <input type="text" class="form-control" name="arg0" value="${UID?string.computer}" readonly/>
                 <div class="input-group-append">
                     <button class="btn-secondary" type="submit">Select</button>
                 </div>
@@ -74,19 +74,19 @@
                 <div class="input-group-prepend w-25">
                   <span class="input-group-text w-100">Get My Schedule</span>
                 </div>
-                <input type="date" class="form-control" id="arg0"/>
+                <input type="date" class="form-control" name="arg0"/>
                 <div class="input-group-append">
                   <button class="btn-secondary" type="submit">Select</button>
                 </div>
               </div>
             </form>
 
-            <form action="/prescription/">
+            <form action="/chart/">
               <div class="input-group">
                 <div class="input-group-prepend w-25">
                   <span class="input-group-text w-100">Get Patient Chart</span>
                 </div>
-                <input type="text" class="form-control" id="arg0" value="${UID?string.computer}"/>
+                <input type="text" class="form-control" name="arg0" value="${UID?string.computer}"/>
                 <div class="input-group-append">
                   <button class="btn-secondary" type="submit">Select</button>
                 </div>
@@ -158,7 +158,7 @@
                   <div class="input-group-prepend w-25">
                     <span class="input-group-text w-100">Billing and Payment</span>
                   </div>
-                  <input type="text" class="form-control disable" id="arg0" placeholder="Patient UID"/>
+                  <input type="text" class="form-control disable" name="arg0" placeholder="Patient UID"/>
                   <div class="input-group-append">
                     <button class="btn-secondary" type="submit">Select</button>
                   </div>
@@ -176,7 +176,7 @@
                   <div class="input-group-prepend w-25">
                     <span class="input-group-text w-100">Get My Profile</span>
                   </div>
-                  <input type="text" class="form-control disable" id="arg0" value="${UID?string.computer}" readonly/>
+                  <input type="text" class="form-control disable" name="arg0" value="${UID?string.computer}" readonly/>
                   <div class="input-group-append">
                       <button class="btn-secondary" type="submit">Select</button>
                   </div>

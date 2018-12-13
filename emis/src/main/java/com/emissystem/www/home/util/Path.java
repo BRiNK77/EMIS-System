@@ -10,7 +10,7 @@ public class Path {
         @Getter public static final String LOGIN = "/login/";
         @Getter public static final String LOGOUT = "/logout/";
         @Getter public static final String MAIN = "/main/";
-        @Getter public static final String PATIENTLIST = "/patientlist/";
+        @Getter public static final String PATIENTLIST = "/patientList/";
         @Getter public static final String CHART = "/chart/";
         @Getter public static final String APPOINTMENT = "/appointment/";
         @Getter public static final String SCHEDULE = "/schedule/";
@@ -21,9 +21,9 @@ public class Path {
 
     public static class Template {
         public final static String INDEX = "/freemarker/index.ftlh";
-        public final static String LOGIN = "/freemarker/login.ftlh";
+        public final static String LOGIN = "/public/login.html";
         public final static String MAIN = "/freemarker/main.ftlh";
-        public static final String PATIENTLIST = "/freemarker/patientlist.ftlh";
+        public static final String PATIENTLIST = "/freemarker/patientList.ftlh";
         public static final String CHART = "/freemarker/chart.ftlh";
         public static final String SCHEDULE = "/freemarker/schedule.ftlh";
         public static final String PROFILE = "/freemarker/profile.ftlh";

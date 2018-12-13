@@ -29,7 +29,8 @@ class MainController {
 
     static Route serveChartPage = (Request request, Response response) -> {
         Map<String, Object> model = new HashMap<>();
-        User patient = userDao.getUserByUID(Integer.getInteger(request.queryParams("arg0")));
+        String arg0 = request.queryParams("arg0");
+        User patient = userDao.getUserByUID(Integer.valueOf(arg0));
         List<ChartEntry> chartEntries = chartDao.getAllEntriesByUID(patient.getUID());
         model.put("NAME", patient.getNAME());
         model.put("DATEList", chartEntries.stream().map(ChartEntry::getDATE).collect(Collectors.toList()));
