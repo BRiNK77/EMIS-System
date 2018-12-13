@@ -86,7 +86,7 @@
                 <div class="input-group-prepend w-25">
                   <span class="input-group-text w-100">Get Patient Chart</span>
                 </div>
-                <input type="text" class="form-control" name="arg0" value="${UID?string.computer}"/>
+                <input type="text" class="form-control" name="arg0" placeholder="UID - try 1008"/>
                 <div class="input-group-append">
                   <button class="btn-secondary" type="submit">Select</button>
                 </div>

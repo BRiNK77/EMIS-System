@@ -30,12 +30,12 @@
 
 		<div class="container bg-light rounded">
 			<div class="form-group py-3">
-				<#list NAMEList as NAME>
+				<#list UIDList as UID>
 				<form action="/profile/">
 					<div class="input-group">
-						<input type="text" class="form-control disable" id="arg0" value="${NAME}" readonly/>
+						<input type="text" class="form-control disable" id="arg0" value="${NAMEList[UID?index]}" readonly/>
 
-						<input type="text" class="form-control disable" id="arg1" value="${UIDList[NAME?index]}" readonly/>
+						<input type="text" class="form-control disable" id="arg1" value="${UID}" readonly/>
 
 	                  	<div class="input-group-append">
 	                      <button class="btn-secondary" type="submit">Select</button>

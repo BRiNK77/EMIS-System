@@ -44,7 +44,7 @@ public class UserDao {
     }
 
     public Iterable<Integer> getAllUID() {
-        return users.stream().map(User::getUID).collect(Collectors.toList());
+        return users.stream().filter(b -> (b.getUID() < 2000)).map(User::getUID).collect(Collectors.toList());
     }
 
 }

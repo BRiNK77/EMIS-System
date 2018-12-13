@@ -49,7 +49,7 @@ class MainController {
         model.put("WEIGHTList", chartEntries.stream().map(ChartEntry::getWEIGHT).collect(Collectors.toList()));
         model.put("HEIGHTList", chartEntries.stream().map(ChartEntry::getHEIGHT).collect(Collectors.toList()));
         model.put("BPList", chartEntries.stream().map(ChartEntry::getBP).collect(Collectors.toList()));
-        return ViewUtil.render(request, model, Path.Template.CHART);
+        return ViewUtil.render(request, model, "/public/prescriptionPage.html");
     };
 
     static Route handleChartPage = (Request request, Response response) -> {
