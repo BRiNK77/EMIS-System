@@ -1,19 +1,12 @@
 <!--
   Expected Data:
-    currUser.type: The type of user the current user is. 
+    PRIVLEVEL: The privLevel of user the current user is. 
       Values: patient, doctor, nurse, receptionist, admin
 
-    currUser.name: The name of the current user. 
+    NAME: The name of the current user. 
       Value: First name Last Name
 
-    currUser.ID: The UID for the current user
-
-    TODO:
-      Instead of passing a single user called nurse, change to passing an arraylist of nurse users
-
-    receptionist.name: If the user is a patient, provide a nurse they could speak with to request an appointment
-
-    receptionist.ID: If the user is a patient, provide the ID of the nurse they could speak to to request an appointment
+    UID: The UID for the current user
 -->
 
 <!DOCTYPE html>
@@ -33,69 +26,67 @@
 
 		<div class="row">
 			<div class="col">
-				<form action="loginR.html" style="padding:10px">
+				<form action="login/" style="padding:10px">
 					<button class="btn" type="submit">Logout</button>
 				</form>
 			</div>
 		</div>
 		<h2 class="text-center" style="color:white;">Main Access Portal: 
-      <#switch user.type>
-        <#case "doctor"> Doctor
+      <#switch PRIVLEVEL>
+        <#case "DOC"> Doctor
         <#break>
         
-        <#case "nurse"> Nurse
+        <#case "NUR"> Nurse
         <#break>
         
-        <#case "receptionist"> Receptionist
+        <#case "REC"> Receptionist
         <#break>
         
-        <#case "patient"> Patient
+        <#case "PAT"> Patient
         <#break>
 
-        <#case "admin"> Admin
-        <#break>
-
-        <#default> ?????? Shit's Fucked. user.type = ${currUser.type}
+        <#default> ?????? Shit's Fucked. PRIVLEVEL = ${PRIVLEVEL}
         <#break>
 
       </#switch>
-         - ${user.name}
+         - ${NAME}
     </h2>
 
-    <#switch user.type>
-      <#case "doctor">
+    <#switch PRIVLEVEL>
+      <#case "DOC">
+      <#case "NUR">
         <div class="container bg-light rounded">
           <div class="form-group py-3 " >
-            <form action="/patientList.html">
+            <form action="/patientList/">
               <div class="input-group">
                 <div class="input-group-prepend w-25">
                   <span class="input-group-text w-100">Get My Patient List</span>
                 </div>
-                <input type="text" class="form-control disable" value="${user.name} : ${user.ID}" readonly/>
+                <input type="text" class="form-control" id="arg0" value="${UID?string.computer}" readonly/>
                 <div class="input-group-append">
                     <button class="btn-secondary" type="submit">Select</button>
                 </div>
               </div>
             </form>
 
-            <form action="/schedulePage.html">
+            <form action="/schedule/">
               <div class="input-group">
                 <div class="input-group-prepend w-25">
                   <span class="input-group-text w-100">Get My Schedule</span>
                 </div>
-                <input type="date" class="form-control disable" value="2018-12-03" />
+                <input type="date" class="form-control" id="arg0"/>
                 <div class="input-group-append">
                   <button class="btn-secondary" type="submit">Select</button>
                 </div>
               </div>
             </form>
 
-            <form action="/prescriptionPage.html">
+            <form action="/prescription/">
               <div class="input-group">
                 <div class="input-group-prepend w-25">
-                  <span class="input-group-text w-100">Get Prescription List</span>
+                  <span class="input-group-text w-100">Get Patient Chart</span>
                 </div>
-                <input type="text" class="form-control disable" value="${user.name} : ${user.ID}" readonly/>
+                <input type="text" class="form-control" id="arg0" value="${UID?string.computer}"/>
                 <div class="input-group-append">
                   <button class="btn-secondary" type="submit">Select</button>
                 </div>
@@ -105,72 +96,69 @@
         </div>
       <#break>
 
-      <#case "nurse">
-      <#break>
-
-      <#case "receptionist">
+      <#case "REC">
         <div class="container bg-light rounded">
-            <div class="form-group py-3 " >
-              <form action="/patientList.html">
+            <div class="form-group py-3">
+              <form action="/patientList/">
                 <div class="input-group">
                   <div class="input-group-prepend w-25">
                     <span class="input-group-text w-100">Get Patient List</span>
                   </div>
-                  <input type="text" class="form-control disable" value="All Names : UID00000" readonly/>
+                  <span class="form-control disable"></span>
                   <div class="input-group-append">
                       <button class="btn-secondary" type="submit">Select</button>
                   </div>
                 </div>
               </form>
 
-              <form action="/patientList.html">
+              <form action="/patientList/">
                 <div class="input-group">
                   <div class="input-group-prepend w-25">
                     <span class="input-group-text w-100">Add Patient</span>
                   </div>
-                  <input type="text" class="form-control disable" placeholder="Patient UID"/>
-                  <input type="text" class="form-control disable" placeholder="Patient Name"/>
-                  <input type="date" class="form-control disable" />
-                  <input type="email" class="form-control disable" placeholder="patient@email.com"/>
+                  <input type="text" class="form-control disable" id="arg0" placeholder="Patient UID"/>
+                  <input type="text" class="form-control disable" id="arg1" placeholder="Patient Name"/>
+                  <input type="date" class="form-control disable" id="arg2"/>
+                  <input type="email" class="form-control disable" id="arg3" placeholder="patient@email.com"/>
                   <div class="input-group-append">
                     <button class="btn-secondary" type="submit">Select</button>
                   </div>
                 </div>
               </form>
 
-              <form action="/schedulePage.html">
+              <form action="/schedule/">
                 <div class="input-group">
                   <div class="input-group-prepend w-25">
                     <span class="input-group-text w-100">Get Schedule</span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Member UID" />
-                  <input type="date" class="form-control" value="2018-12-10" />
+                  <input type="text" class="form-control" id="arg0" placeholder="Member UID" />
+                  <input type="date" class="form-control" id="arg1"/>
                   <div class="input-group-append">
                     <button class="btn-secondary" type="submit">Select</button>
                   </div>
                 </div>
               </form>
 
-              <form action="/schedulePage.html">
+              <form action="/schedule/">
                 <div class="input-group">
                   <div class="input-group-prepend w-25">
                     <span class="input-group-text w-100">Add Appointment</span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Patient UID" />
-                    <input type="text" class="form-control" placeholder="Doctor UID" />
-                  <input type="date" class="form-control" />
+                  <input type="text" class="form-control" id="arg0" placeholder="Patient UID" />
+                  <input type="text" class="form-control" id="arg1" placeholder="Doctor UID" />
+                  <input type="date" class="form-control" id="arg2"/>
                   <div class="input-group-append">
                     <button class="btn-secondary" type="submit">Select</button>
                   </div>
                 </div>
               </form>
 
-              <form action="/billingPage.html">
+              <form action="/billing/">
                 <div class="input-group">
                   <div class="input-group-prepend w-25">
                     <span class="input-group-text w-100">Billing and Payment</span>
                   </div>
-                  <input type="text" class="form-control disable" placeholder="Patient UID"/>
+                  <input type="text" class="form-control disable" id="arg0" placeholder="Patient UID"/>
                   <div class="input-group-append">
                     <button class="btn-secondary" type="submit">Select</button>
                   </div>
@@ -180,41 +168,42 @@
         </div>
       <#break>
       
-      <#case "patient">
+      <#case "PAT">
         <div class="container bg-light rounded">
             <div class="form-group py-3 " >
-              <form action="/patientPage.html">
+              <form action="/profile/">
                 <div class="input-group">
                   <div class="input-group-prepend w-25">
                     <span class="input-group-text w-100">Get My Profile</span>
                   </div>
-                  <input type="text" class="form-control disable" value="${user.name} : ${user.ID}" readonly/>
+                  <input type="text" class="form-control disable" id="arg0" value="${UID?string.computer}" readonly/>
                   <div class="input-group-append">
                       <button class="btn-secondary" type="submit">Select</button>
                   </div>
                 </div>
               </form>
 
-              <form action="/schedulePage.html">
+              <form action="/schedule/">
                 <div class="input-group">
                   <div class="input-group-prepend w-25">
                     <span class="input-group-text w-100">Get My Schedule</span>
                   </div>
-                  <input type="date" class="form-control disable" value="2018-12-03" />
+                  <input type="text" class="form-control" id="arg1" value="${UID?string.computer}" readonly/>
+                  <input type="date" class="form-control" id="arg0"/>
                   <div class="input-group-append">
                     <button class="btn-secondary" type="submit">Select</button>
                   </div>
                 </div>
               </form>
 
-              <form action="/schedulePage.html">
+              <form action="/schedule/">
                 <div class="input-group">
                   <div class="input-group-prepend w-25">
                     <span class="input-group-text w-100">Request Appointment</span>
                   </div>
-                  <input type="text" class="form-control" value="${user.name} : ${user.ID}" readonly/>
-                    <input type="text" class="form-control" placeholder="${receptionist.name} : ${erceptionist.ID}" readonly/>
-                  <input type="date" class="form-control" />
+                  <input type="date" class="form-control" id="arg0"/>
+                  <input type="time" class="form-control" id="arg1"/>
+                  <input type="text" class="form-control" id="arg2" placeholder="Reason"/>
                   <div class="input-group-append">
                     <button class="btn-secondary" type="submit">Select</button>
                   </div>
@@ -224,11 +213,8 @@
         </div>
       <#break>
 
-      <#case "admin">
-      <#break>
-
       <#default>
-      <div class="text-center" style="color:red;">Some shit went horribly, horribly wrong. User.type = ${currUser.type}</div>
+      <div class="text-center" style="color:red;">Some shit went horribly, horribly wrong. PRIVLEVEL = ${PRIVLEVEL}</div>
       <#break>
 
     </#switch>
