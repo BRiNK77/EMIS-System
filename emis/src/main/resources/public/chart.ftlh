@@ -11,7 +11,6 @@
     DOCTORNOTEList: 1 to 1 chart entry
     DIAGNOSEList: Many to 1 chart entry
     PRESCRIPTIONList: Many to 1 chart entry
-    AILMENTList: Many to 1 chart entry
     BPList: 1 to 1 chart entry
     HEIGHTList: 1 to 1 chart entry
     WEIGHTList: 1 to 1 chart entry
@@ -37,34 +36,33 @@
 		<form method="POST" action="/chart/">
 			<div class="form-group py-3">
 
-				<div class = "input-group">
-					<div class="input-group-prepend w-25">
-	                  <span class="input-group-text w-100">Date:</span>
-	                </div>
-					<input type="date" class="form-control .addDate disable" id="arg0" readonly/>
-				</div>
-
 				<div class="input-group">
 					<div class="input-group-prepend w-25">
 	                  <span class="input-group-text w-100">Doctor Note:</span>
 	                </div>
-					<input type="text" class="form-control" id="arg1"/>
+					<input type="text" class="form-control" id="arg0"/>
+	                <div class="input-group-append">
+	                    <button class="btn-secondary" type="submit">Select</button>
+	                </div>
 				</div>
 
 				<div class="input-group">
 					<div class="input-group-prepend w-25">
 	                  <span class="input-group-text w-100">Diagnoses:</span>
 	                </div>
-					<input type="text" class="form-control" id="arg2"/>
+					<input type="text" class="form-control" id="arg1"/>
+	                <div class="input-group-append">
+	                    <button class="btn-secondary" type="submit">Select</button>
+	                </div>
 				</div>
 
 				<div class="input-group">
 					<div class="input-group-prepend w-25">
 	                  <span class="input-group-text w-100">Prescriptions:</span>
 	                </div>
-					<input type="text" class="form-control" id="arg3" placeholder="Generic Name"/>
-					<input type="text" class="form-control" id="arg4" placeholder="Dosage"/>
-					<input type="text" class="form-control" id="arg5" placeholder="Count"/>
+					<input type="text" class="form-control" id="arg2" placeholder="Generic Name"/>
+					<input type="text" class="form-control" id="arg3" placeholder="Dosage"/>
+					<input type="text" class="form-control" id="arg4" placeholder="Count"/>
 	                <div class="input-group-append">
 	                    <button class="btn-secondary" type="submit">Select</button>
 	                </div>
@@ -74,9 +72,9 @@
 					<div class="input-group-prepend w-25">
 	                  <span class="input-group-text w-100">General:</span>
 	                </div>
-					<input type="text" class="form-control" id="arg6" placeholder="Blood Pressure"/>
-					<input type="text" class="form-control" id="arg7" placeholder="Height"/>
-					<input type="text" class="form-control" id="arg8" placeholder="Weight"/>
+					<input type="text" class="form-control" id="arg5" placeholder="Blood Pressure"/>
+					<input type="text" class="form-control" id="arg6" placeholder="Height"/>
+					<input type="text" class="form-control" id="arg7" placeholder="Weight"/>
 	                <div class="input-group-append">
 	                    <button class="btn-secondary" type="submit">Select</button>
 	                </div>
@@ -106,23 +104,23 @@
 						<input type="text" class="form-control disable" value="${DOCTORNOTEList[DATE?index]}" readonly/>
 					</div>
 						
-	                <#list DIAGNOSEList[DATE?index] as DIAGNOSE>
 					<div class="input-group">
 						<div class="input-group-prepend w-25">
 		                  <span class="input-group-text w-100">Diagnoses:</span>
 		                </div>
+		                <#list DIAGNOSEList[DATE?index] as DIAGNOSE>
 						<input type="text" class="form-control disable" value="${DIAGNOSE}" readonly/>
+						</#list>
 					</div>
-					</#list>
 						
-	                <#list PRESCRIPTIONList[DATE?index] as PRESCRIPTION>
 					<div class="input-group">
 						<div class="input-group-prepend w-25">
 		                  <span class="input-group-text w-100">Prescriptions:</span>
 		                </div>
+		                <#list PRESCRIPTIONList[DATE?index] as PRESCRIPTION>
 						<input type="text" class="form-control disable" value="${PRESCRIPTION}" readonly/>
+						</#list>
 					</div>
-					</#list>
 
 					<div class="input-group">
 						<div class="input-group-prepend w-25">
@@ -166,9 +164,9 @@
   integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
   crossorigin="anonymous"></script>
 
-  <script> 
+<script> 
     $(document).ready( function() {
-      $('.addDate').val(new Date().toDateInputValue());
+      $('#datePicker').value(new Date().toDateInputValue());
     });
 </script>
 
