@@ -1,5 +1,7 @@
 package com.emissystem.www.home.model;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.util.Objects;
 
 // All fields are private and final. Getters (but not setters) are generated (https://projectlombok.org/features/Value.html)
@@ -19,6 +21,16 @@ public class User {
         this.UID = UID;
         this.NAME = NAME;
         this.PRIVLEVEL = PRIVLEVEL;
+    }
+
+    //constructor for creating a new patient by Receptionist
+    public User(String EMAIL, int UID, String NAME) {
+        this.EMAIL = EMAIL;
+        this.SALT = BCrypt.gensalt();
+        this.PASS = "password";
+        this.UID = UID;
+        this.NAME = NAME;
+        this.PRIVLEVEL = "PAT";
     }
 
     public String getEMAIL() {

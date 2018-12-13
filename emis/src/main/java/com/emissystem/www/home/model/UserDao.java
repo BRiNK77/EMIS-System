@@ -47,4 +47,8 @@ public class UserDao {
         return users.stream().filter(b -> (b.getUID() < 2000)).map(User::getUID).collect(Collectors.toList());
     }
 
+    public void addEntry(User user) {
+        users.add(user);
+    }
+
 }

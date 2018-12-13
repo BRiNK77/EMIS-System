@@ -11,6 +11,7 @@ public class Path {
         @Getter public static final String LOGOUT = "/logout/";
         @Getter public static final String MAIN = "/main/";
         @Getter public static final String PATIENTLIST = "/patientList/";
+        @Getter public static final String ADDPATIENT = "/patientList/add/";
         @Getter public static final String CHART = "/chart/";
         @Getter public static final String APPOINTMENT = "/appointment/";
         @Getter public static final String SCHEDULE = "/schedule/";

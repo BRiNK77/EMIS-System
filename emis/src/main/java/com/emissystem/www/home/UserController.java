@@ -17,21 +17,14 @@ public class UserController {
             return false;
         }
         String hashedPassword = BCrypt.hashpw(password, user.getSALT());
-        return password.equals(user.getPASS());
+        return hashedPassword.equals(BCrypt.hashpw(user.getPASS(), user.getSALT()));
     }
 
-    //TODO: provide method for statically matching PrivLevel to a user
-
-    // This method doesn't do anything, it's just included as an example
     public static void setPassword(String username, String oldPassword, String newPassword) {
         if (authenticate(username, oldPassword)) {
             String newSalt = BCrypt.gensalt();
             String newHashedPassword = BCrypt.hashpw(newSalt, newPassword);
             // Update the user salt and password
         }
-    }
-
-    public static String getPrivilege(String queryUsername) {
-        return userDao.getUserByUsername(queryUsername).getPRIVLEVEL();
     }
 }

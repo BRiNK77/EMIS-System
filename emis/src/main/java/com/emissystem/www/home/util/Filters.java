@@ -2,6 +2,8 @@ package com.emissystem.www.home.util;
 
 import spark.*;
 import static com.emissystem.www.home.util.RequestUtil.*;
+import com.emissystem.www.home.LoginController;
+import static spark.Spark.halt;
 
 public class Filters {
 
@@ -14,7 +16,15 @@ public class Filters {
     };
 
     // Enable GZIP for all responses
-    public static Filter addGzipHeader = (Request request, Response response)
-            -> response.header("Content-Encoding", "gzip");
+    public static Filter addGzipHeader = (Request request, Response response) -> response.header("Content-Encoding", "gzip");
 
+    public static Filter checkForSession = (Request request, Response response) -> {
+        // if user isn't logged in, redirect to the login screen
+        if ((request.session(false) == null || getSessionCurrentUser(request) == null)
+            && ! request.pathInfo().equals(Path.Web.LOGIN)) {
+            response.redirect(Path.Web.LOGIN);
+            //LoginController.serveLoginPage.handle(request,response);
+            halt();
+        }
+    };
 }

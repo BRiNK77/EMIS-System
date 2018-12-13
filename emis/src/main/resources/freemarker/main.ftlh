@@ -111,15 +111,14 @@
                 </div>
               </form>
 
-              <form action="/patientList/">
+              <form action="/patientList/add/" method="post">
                 <div class="input-group">
                   <div class="input-group-prepend w-25">
                     <span class="input-group-text w-100">Add Patient</span>
                   </div>
-                  <input type="text" class="form-control disable" id="arg0" placeholder="Patient UID"/>
-                  <input type="text" class="form-control disable" id="arg1" placeholder="Patient Name"/>
-                  <input type="date" class="form-control disable" id="arg2"/>
-                  <input type="email" class="form-control disable" id="arg3" placeholder="patient@email.com"/>
+                  <input type="text" class="form-control disable" name="arg0" placeholder="Patient UID"/>
+                  <input type="text" class="form-control disable" name="arg1" placeholder="Patient Name"/>
+                  <input type="email" class="form-control disable" name="arg2" placeholder="patient@email.com"/>
                   <div class="input-group-append">
                     <button class="btn-secondary" type="submit">Select</button>
                   </div>

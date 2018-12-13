@@ -20,11 +20,6 @@ public class ViewUtil {
         return strictFreeMarkerEngine().render(new ModelAndView(model, templatePath));
     }
 
-    public static Route notAcceptable = (Request request, Response response) -> {
-        response.status(HttpStatus.NOT_ACCEPTABLE_406);
-        return null;
-    };
-
     public static Route notFound = (Request request, Response response) -> {
         response.status(HttpStatus.NOT_FOUND_404);
         return render(request, new HashMap<>(), Path.Template.NOT_FOUND);
@@ -33,7 +28,6 @@ public class ViewUtil {
     private static FreeMarkerEngine strictFreeMarkerEngine() {
         FreeMarkerEngine configuredEngine = new FreeMarkerEngine();
         Configuration cfg = new Configuration(Configuration.VERSION_2_3_23);
-        //cfg.setDirectoryForTemplateLoading(new File("src/main/resources/freemarker"));
         cfg.setClassForTemplateLoading(EmisMain.class, "/");
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
         cfg.setDefaultEncoding("UTF-8");

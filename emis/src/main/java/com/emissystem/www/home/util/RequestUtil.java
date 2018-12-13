@@ -1,5 +1,6 @@
 package com.emissystem.www.home.util;
 
+import com.emissystem.www.home.model.User;
 import spark.*;
 
 public class RequestUtil {
@@ -11,7 +12,7 @@ public class RequestUtil {
         return request.queryParams("password");
     }
 
-    public static String getSessionCurrentUser(Request request) {
+    public static User getSessionCurrentUser(Request request) {
         return request.session().attribute("currentUser");
     }
 

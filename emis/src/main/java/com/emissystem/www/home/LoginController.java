@@ -10,26 +10,26 @@ import static com.emissystem.www.home.util.RequestUtil.*;
 public class LoginController {
 
     public static Route serveLoginPage = (Request request, Response response) -> {
+        //invalidate the current session if login is shown
+        request.session().invalidate();
         return ViewUtil.render(request, new HashMap<>(), Path.Template.LOGIN);
     };
 
-    public static Route handleLoginPost = (Request request, Response response) -> {
+    static Route handleLoginPost = (Request request, Response response) -> {
         Map<String, Object> model = new HashMap<>();
-        System.out.print(getQueryEmail(request) + request.params() + "\n");
+        // authenticate the user
         if (!UserController.authenticate(getQueryEmail(request), getQueryPassword(request))) {
+            //if failed, then return user to the login page to try again
             model.put("authenticationFailed", true);
             return ViewUtil.render(request, model, Path.Template.LOGIN);
         }
-        model.put("authenticationSucceeded", true);
-        request.session().attribute("currentUser", getQueryEmail(request));
-        request.session().attribute("privilege", UserController.getPrivilege(getQueryEmail(request)));
-        model.put("PRIVLEVEL", userDao.getUserByUsername(getQueryEmail(request)).getPRIVLEVEL() );
-        model.put("UID", userDao.getUserByUsername(getQueryEmail(request)).getUID());
-        model.put("NAME", userDao.getUserByUsername(getQueryEmail(request)).getNAME());
-        return ViewUtil.render(request, model, Path.Template.MAIN);
+        // success, so set the session's attribute to the current user's credential and route to main page
+        request.session(true);
+        request.session().attribute("currentUser", userDao.getUserByUsername(getQueryEmail(request)));
+        return MainController.serveMainPage.handle(request, response);
     };
 
-    public static Route handleLogoutPost = (Request request, Response response) -> {
+    static Route handleLogoutPost = (Request request, Response response) -> {
         request.session().removeAttribute("currentUser");
         request.session().attribute("loggedOut", true);
         response.redirect(Path.Web.LOGIN);
