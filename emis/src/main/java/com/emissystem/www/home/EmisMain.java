@@ -3,7 +3,6 @@ package com.emissystem.www.home;
 import com.emissystem.www.home.model.ChartDao;
 import com.emissystem.www.home.model.UserDao;
 import com.emissystem.www.home.util.*;
-import spark.Filter;
 
 import static spark.Spark.*;
 
@@ -18,7 +17,7 @@ public class EmisMain {
         staticFileLocation("/public"); //routes static html file paths to the file
 
         // BEFORE FILTERS
-        before("*", Filters.addTrailingSlashes);
+        before("*",     Filters.addTrailingSlashes);
         before("*",     Filters.checkForSession);
 
         // ROUTING MAP

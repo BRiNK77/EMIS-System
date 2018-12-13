@@ -9,7 +9,7 @@ import static com.emissystem.www.home.util.RequestUtil.*;
 
 public class LoginController {
 
-    public static Route serveLoginPage = (Request request, Response response) -> {
+    static Route serveLoginPage = (Request request, Response response) -> {
         //invalidate the current session if login is shown
         request.session().invalidate();
         return ViewUtil.render(request, new HashMap<>(), Path.Template.LOGIN);
