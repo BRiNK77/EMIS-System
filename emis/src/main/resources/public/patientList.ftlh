@@ -1,9 +1,7 @@
 <!--
   Expected Data:
     NAMEList: an arraylist of the names of all the patients
-    UIDList: an arraylist of the UID's of all the patients
-
-	
+    UIDList: an arraylist of the UID's of all the patients	
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -30,20 +28,22 @@
 
 		<h2 class="text-center" style="color:white;">Patient List</h2>
 
-		<div class="panel panel-default w-75" style="margin-left:auto;margin-right:auto">
-			<#list NAMEList as NAME>
-			<form action="/profile/">
-				<div class="input-group">
-					<input type="text" class="form-control disable" id="arg0" value="${NAME}" readonly/>
+		<div class="container bg-light rounded">
+			<div class="form-group py-3">
+				<#list NAMEList as NAME>
+				<form action="/profile/">
+					<div class="input-group">
+						<input type="text" class="form-control disable" id="arg0" value="${NAME}" readonly/>
 
-					<input type="text" class="form-control disable" id="arg1" value="${UIDList[NAME?index]}" readonly/>
+						<input type="text" class="form-control disable" id="arg1" value="${UIDList[NAME?index]}" readonly/>
 
-                  	<div class="input-group-append">
-                      <button class="btn-secondary" type="submit">Select</button>
-                  	</div>
-				</div>
-			</form>
-          	</#list>
+	                  	<div class="input-group-append">
+	                      <button class="btn-secondary" type="submit">Select</button>
+	                  	</div>
+					</div>
+				</form>
+	          	</#list>
+          	</div>
 		</div>
 	</div>
 
